@@ -16,11 +16,11 @@ from google.genai import types
 # ==========================================
 DB_PATH = "data/historial_licitaciones.db"
 
-TICKET_MERCADO_PUBLICO = os.environ.get("TICKET_MERCADO_PUBLICO") or "0F5BF2E7-773F-47B0-BA93-42DA3EF534EF"
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY") or "AQ.Ab8RN6K163dVZRbyhVPXTj9QUamihjsG7NAaZ2svoVOzo80ylw"
-EMAIL_SENDER = os.environ.get("EMAIL_SENDER") or "suazotaku@gmail.com"
-EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD") or "gawl fggg xdyi jgeh"
-EMAIL_RECIPIENTS = os.environ.get("EMAIL_RECIPIENTS") or "suazotaku@gmail.com"
+TICKET_MERCADO_PUBLICO = os.environ.get("TICKET_MERCADO_PUBLICO", "")  
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "") 
+EMAIL_SENDER = os.environ.get("EMAIL_SENDER", "")  
+EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD", "")  
+EMAIL_RECIPIENTS = os.environ.get("EMAIL_RECIPIENTS", "")
 
 print(f"[DEBUG] Destinatarios cargados: '{EMAIL_RECIPIENTS}'")
 
@@ -493,4 +493,5 @@ def main():
             marcar_como_notificada(lic.get("CodigoExterno", ""))
 
 if __name__ == "__main__":
+
     main()
