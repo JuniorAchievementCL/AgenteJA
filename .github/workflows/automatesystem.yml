@@ -1,0 +1,43 @@
+name: Monitoreo Diario Mercado Público - JA Chile
+
+on:
+  schedule:
+    - cron: '0 11 * * *' # Ejecuta 1 vez al día a las 11:00 UTC (08:00 AM en Chile)
+  workflow_dispatch: # Permite ejecutarlo manualmente con un clic desde GitHub
+
+permissions:
+  contents: write # Necesario para que GitHub guarde el historial SQLite en tu repo
+
+jobs:
+  ejecutar-agente:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar código del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar librerías necesarias
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests google-genai
+
+      - name: Ejecutar Agente Evaluador y Notificador
+        env:
+          TICKET_MERCADO_PUBLICO: ${{ secrets.TICKET_MERCADO_PUBLICO }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_RECIPIENTS: ${{ secrets.EMAIL_RECIPIENTS }}
+        run: python main.py
+
+      - name: Guardar base de datos SQLite actualizada
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/historial_licitaciones.db
+          git commit -m "Actualiza historial SQLite de licitaciones" || exit 0
+          git push
