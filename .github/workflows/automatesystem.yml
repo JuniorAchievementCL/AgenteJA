@@ -6,7 +6,7 @@ on:
   workflow_dispatch: # Permite ejecutarlo manualmente con un clic desde GitHub
 
 permissions:
-  contents: write # Necesario para que GitHub guarde el historial SQLite en tu repo
+  contents: write # Necesario para guardar el historial SQLite en el repo
 
 jobs:
   ejecutar-agente:
@@ -25,14 +25,22 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests google-genai
 
-      - name: Ejecutar Agente Evaluador y Notificador
+      - name: Ejecutar mmp.py
         env:
           TICKET_MERCADO_PUBLICO: ${{ secrets.TICKET_MERCADO_PUBLICO }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
           EMAIL_RECIPIENTS: ${{ secrets.EMAIL_RECIPIENTS }}
-        run: python main.py
+        run: |
+          SCRIPT_PATH=$(find . -name "mmp.py" | head -n 1)
+          if [ -z "$SCRIPT_PATH" ]; then
+            echo "❌ ERROR: No se encontró mmp.py en el repositorio. Archivos actuales:"
+            ls -la
+            exit 1
+          fi
+          echo "✅ Ejecutando: $SCRIPT_PATH"
+          python "$SCRIPT_PATH"
 
       - name: Guardar base de datos SQLite actualizada
         run: |
