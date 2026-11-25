@@ -1,8 +1,8 @@
-name: Monitoreo Diario Mercado Público - JA Chile
+name: Monitoreo Semanal Mercado Público - JA Chile
 
 on:
   schedule:
-    - cron: '0 11 * * *' # Ejecuta 1 vez al día a las 11:00 UTC (08:00 AM en Chile)
+    - cron: '0 12 * * 1' # Ejecuta 1 vez a la semana (los lunes a las 12:00 UTC / 09:00 AM Chile)
   workflow_dispatch: # Permite ejecutarlo manualmente con un clic desde GitHub
 
 permissions:
