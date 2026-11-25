@@ -1,7 +1,7 @@
 # AgenteJA
 Proyecto de monitoreo para fuentes de financiamiento de programas JA en Mercadopublico.cl
 
-Cada lunes hace envío de los proyectos de licitación que se adecúen a los requerimientos de Junior Achievement y les asigna un puntaje para el mismo. La funcionalidad completa del sistema/agente, se encuentra en la archivo python llamado mmp (monitor mercado público) dentro de la carpeta scripts.
+Cada lunes hace envío de los proyectos de licitación que se adecúen a los requerimientos de Junior Achievement y les asigna un puntaje, la IA interpreta y analiza las licitaciones basado en la información que se le entregó con el perfil de junior achievement chile, entregado por Claudio P. gestor de proyectos en la organización. La funcionalidad completa del sistema/agente, se encuentra en la archivo python llamado mmp (monitor mercado público) dentro de la carpeta scripts.
 
 El esquema de los envíos de correos se encuentra dentro de la carpeta .github/workflow en el archivo llamado automatesystem. Para modificar el correo que los envía, se ajusta en Settings (barra superior) -> Secrets and Variables (columna de configuración abajo a la izquierda) -> Actions
 
