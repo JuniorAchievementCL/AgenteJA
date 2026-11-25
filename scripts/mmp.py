@@ -273,7 +273,7 @@ def evaluar_con_gemini(licitacion: dict) -> dict:
     CRITERIOS DE EVALUACIÓN FLEXIBLE (PRIORIDAD AL OBJETO REAL):
     - No te limites a buscar palabras exactas: evalúa si la metodología de talleres prácticos, mentorías, ferias, desafíos de innovación o capacitación de JA Chile puede resolver la necesidad del organismo comprador.
     - Niveles de pertinencia:
-      * "Alta": Calza directamente con las temáticas, metodología activa y público juvenil/escolar de JA Chile.
+      * "Alta": Calza directamente con las temáticas, metodología activa y público juvenil/escolar/mujeres de JA Chile.
       * "Condicionada": El objeto es afín (ej. emprendimiento para microempresarios adultos, programas de género/STEM, capacitación a docentes o medición/evaluación educativa), pero requiere confirmar capacidad interna o alcance.
       * "No relevante": Compra de bienes/equipamiento, obras, servicios clínicos/psicológicos individuales, reforzamiento escolar tradicional o desarrollo de software.
     - REGLA CRÍTICA DE VERIFICACIÓN: Nunca asumas que JA Chile posee acreditación OTEC, registro ATE, certificaciones específicas o cobertura regional garantizada. Si la licitación menciona requisitos habilitantes o técnicos, lístalos en "por_verificar" para revisión humana sin descartar la oportunidad si el objeto formativo encaja.
