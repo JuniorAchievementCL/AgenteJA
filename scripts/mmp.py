@@ -20,7 +20,7 @@ TICKET_MERCADO_PUBLICO = os.environ.get("TICKET_MERCADO_PUBLICO", "")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "") 
 EMAIL_SENDER = os.environ.get("EMAIL_SENDER", "")  
 EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD", "")  
-EMAIL_RECIPIENTS = os.environ.get("EMAIL_RECIPIENTS", "")
+EMAIL_RECIPIENTS = os.environ.get("EMAIL_RECIPIENTS", "purbina@jachile.org", "")
 
 print(f"[DEBUG] Destinatarios cargados: '{EMAIL_RECIPIENTS}'")
 
